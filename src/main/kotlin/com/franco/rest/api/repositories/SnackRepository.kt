@@ -5,4 +5,7 @@ import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface SnackRepository : MongoRepository<Snack, String>
+interface SnackRepository : MongoRepository<Snack, String> {
+
+    fun findAllByName(name: String): List<Snack>
+}

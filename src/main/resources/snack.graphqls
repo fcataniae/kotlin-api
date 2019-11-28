@@ -2,6 +2,10 @@ type Query {
     snacks: [Snack]
 }
 
+type Query {
+    snacks(name: String): [Snack]
+}
+
 type Snack {
     id: ID!
     name: String

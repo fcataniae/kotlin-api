@@ -22,6 +22,14 @@ class SnackResolver (val snackRepository: SnackRepository,
         return list
     }
 
+    fun snacks(name: String): List<Snack> {
+        val list = snackRepository.findAllByName(name);
+        for (item in list) {
+            item.reviews = getReviews(snackId = item.id)
+        }
+        return list
+    }
+
     private fun getReviews(snackId: String): List<Review> {
         val query = Query()
         query.addCriteria(Criteria.where("snackId").`is`(snackId))
